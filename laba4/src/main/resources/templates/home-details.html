@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Полная информация по клиенту</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h1>Белинвестбанк</h1>
+    <a class="p-2 text-primary" href="/home">Главная страница</a>
+    <a class="p-2 text-primary" href="/home/add">Добавить клиента</a>
+</header>
+
+<div class="container mt-5 mb-5">
+    <div th:each="el:${info}" class="alert alert-warning mt-2">
+        Имя : <p th:text="${el.name}"/>
+        Фамилия : <p  th:text="${el.surname}"/>
+        Отчество : <p  th:text="${el.patronymic}"/>
+        Пол : <p  th:text="${el.pol}"/>
+        Серия паспорта : <p  th:text="${ el.seriapasporta}"/>
+        Номер паспорта : <p  th:text="${el.nomerpasporta}"/>
+        Кем выдан паспорт : <p  th:text="${el.kemvidan}"/>
+        Идентификационный номер паспорта : <p  th:text="${el.identnome}"/>
+        Место рождения : <p  th:text="${el.placeofbirth}"/>
+        Город прописки : <p  th:text="${el.gorodprop}"/>
+        Адрес проживания : <p  th:text="${el.adres}"/>
+        Город проживания : <p  th:text="${el.gorodprog}"/>
+        Семейное положение : <p  th:text="${el.sempologenie}"/>
+        Гражданство : <p  th:text="${el.gragdanstvo}"/>
+        Инвалидность : <p  th:text="${el.invalid}"/>
+        Пенсионер : <p  th:text="${el.pensioner}"/>
+        Военнообязанный : <p  th:text="${el.voen}"/>
+        Доход : <p  th:text="${el.dohod}"/>
+        Дата рождения : <p  th:text="${el.birth}"/>
+        Дата выдачи паспорта : <p  th:text="${el.datavidachi}"/>
+
+        <a th:href="'/home/'+${el.id}+'/edit'" class="btn btn-info">Редактировать</a><br><br>
+        <a th:href="'/credits/client/'+${el.id}+'/info'" class="btn btn-info">Кредиты</a><br><br>
+        <a th:href="'/deposits/client/'+${el.id}+'/info'" class="btn btn-info">Депозиты</a><br><br>
+        <form th:action="'/home/'+${el.id}+'/remove'" method="post">
+            <button th:href="'/home/'+${el.id}+'/remove'" class="btn btn-danger" type="submit">Удалить</button>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

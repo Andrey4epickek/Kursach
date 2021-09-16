@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Страница добавления депозита</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            padding: 10px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h1>Белинвестбанк</h1>
+    <a class="p-2 text-primary" href="/home">Главная страница</a>
+    <a class="p-2 text-primary" href="/home/add">Добавить клиента</a>
+
+</header>
+
+<div class="container mt-5 mb-5">
+    <h1>Добавление депозита</h1>
+    <form action="/deposits/add" method="post">
+
+        <div class="row">
+            <div class="column">
+                <b> Сумма</b>
+                <input type="text" name="summa" placeholder="Введите сумму" class="form-control" required>
+            </div>
+
+            <div class="column">
+                <b> Валюта</b>
+                <select name="currency">
+                    <option>BYN</option>
+                    <option>USD</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+
+            <div class="column">
+                <b> Дата заключения депозита </b>
+                <input type="date"  name="date" placeholder="Дата заключения депозита" class="form-control" required>
+            </div>
+
+            <div class="column">
+                <b> Дата окончания депозитной программы </b>
+                <input type="date"  name="date1" placeholder="Дата окончания депозитной программы" class="form-control" required>
+            </div>
+
+            <div class="column">
+                <b> Тип кредита</b>
+                <select name="type">
+                    <option>Депозитный вклад до востребования</option>
+                    <option>Депозитный срочный вклад с выплатой процентов</option>
+                </select>
+            </div>
+
+            <div class="column">
+                <b> Процент по вкладу </b>
+                <input type="number"  name="procent" placeholder="Процент по вкладу" class="form-control" required>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-warning">Добавить кредит</button>
+    </form>
+</div>
+
+</body>
+</html>

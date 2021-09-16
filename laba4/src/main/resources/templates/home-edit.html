@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование данных о клиенте</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            padding: 10px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h1>Белинвестбанк</h1>
+    <a class="p-2 text-primary" href="/home">Главная страница</a>
+    <a class="p-2 text-primary" href="/home/add">Добавить клиента</a>
+
+</header>
+
+<div class="container mt-5 mb-5">
+    <h1>Редактирование данных</h1>
+    <div th:each="el:${info}" >
+        <form  method="post">
+            <b> Имя</b>
+            <input type="text" th:value="${el.name}" name="name" placeholder="Введите имя" class="form-control" required>
+            <div class="row">
+                <div class="column">
+                    <b> Фамилия</b>
+                    <input type="text" th:value="${el.surname}" name="surname" placeholder="Введите фамилию" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Отчество</b>
+                    <input type="text" th:value="${el.patronymic}" name="patronymic" placeholder="Введите отчество" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Дата рожденния</b>
+                    <input type="date" th:value="${el.birth}" name="birth" placeholder="Введите дату дня рождения" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Пол</b>
+                    <input type="radio" th:value="${el.pol}" name="pol" id="m" value="mug">
+                    <label for="m">Мужской</label>
+                    <input type="radio" th:value="${el.pol}" name="pol" id="g" value="gen">
+                    <label for="g">Женский</label>
+                </div>
+                <div class="column">
+                    <b> Серия паспорта</b>
+                    <input type="text" th:value="${el.seriapasporta}" name="seriapasporta" placeholder="Введите серию паспорта" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Номер паспорта</b>
+                    <input type="text" th:value="${el.nomerpasporta}" name="nomerpasporta" placeholder="Введите номер паспорта" class="form-control" required>
+                </div>
+
+                <b> Кем выдан </b>
+                <input type="text" th:value="${el.kemvidan}" name="kemvidan" placeholder="Кем выдан паспорт" class="form-control" required>
+
+                <b> Дата выдачи </b>
+                <input type="date" th:value="${el.datavidachi}" name="datavidachi" placeholder="Дата выдачи паспорта" class="form-control" required>
+
+                <div class="column">
+                    <b> Идентификационный номер паспорта</b>
+                    <input type="text" th:value="${el.identnome}" name="identnomer" placeholder="Идентификационный номер паспорта" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Место рождения</b>
+                    <input type="text" th:value="${el.placeofbirth}" name="placeofbirth" placeholder="Введите место рождения" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Город прописки</b>
+                    <select th:value="${el.gorodprop}" name="gorodprop">
+                        <option>Brest</option>
+                        <option>Vitebsk</option>
+                        <option>Gomel</option>
+                        <option>Grodno</option>
+                        <option>Minsk</option>
+                        <option>Mogilev</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <b> Адрес проживания</b>
+                    <input type="text" th:value="${el.adres}" name="adres" placeholder="Введите адрес проживания" class="form-control" required>
+                </div>
+                <div class="column">
+                    <b> Город проживания</b>
+                    <select th:value="${el.gorodprog}" name="gorodprog">
+                        <option>Brest</option>
+                        <option>Vitebsk</option>
+                        <option>Gomel</option>
+                        <option>Grodno</option>
+                        <option>Minsk</option>
+                        <option>Mogilev</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <b> Семейное положение</b>
+                    <select th:value="${el.sempologenie}" name="sempologenie">
+                        <option>не женат/не замужем</option>
+                        <option>женат/замужем</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <b> Гражданство</b>
+                    <select th:value="${el.gragdanstvo}" name="gragdanstvo">
+                        <option>Россия</option>
+                        <option>Беларусь</option>
+                        <option>Украина</option>
+                        <option>Польша</option>
+                        <option>Литва</option>
+                        <option>Латвия</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <b> Инвалидность</b>
+                    <select th:value="${el.invalid}" name="invalid">
+                        <option>нет</option>
+                        <option>1-группа</option>
+                        <option>2-группа</option>
+                        <option>3-группа</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <b> Пенсионер</b>
+                    <input type="checkbox" id="1" th:value="${el.pensioner}" name="pensioner" value="Да" >
+                    <label for="1">Да</label>
+                    <input type="checkbox" id="2" th:value="${el.pensioner}" name="pensioner" value="Нет">
+                    <label for="2">Нет</label>
+                </div>
+                <div class="column">
+                    <b> Военнобязанный</b>
+                    <input type="checkbox" id="3" th:value="${el.voen}" name="voen" value="Да" >
+                    <label for="1">Да</label>
+                    <input type="checkbox" id="4" th:value="${el.voen}" name="voen" value="Нет">
+                    <label for="2">Нет</label>
+                </div>
+                <div class="column">
+                    <b> Ежемесячный доход</b>
+                    <input type="text" th:value="${el.dohod}" name="dohod" placeholder="Введите ежемесячный доход" class="form-control">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-info">Обновить</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

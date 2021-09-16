@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Главная страница </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
+    <h1>Белинвестбанк</h1>
+    <a class="p-2 text-primary" href="/home/add">Добавить клиента</a>
+</header>
+
+<div class="container p-3 my-3 bg-white text-white">
+
+    <div th:each="el:${infos}" class="alert alert-info mt-2">
+
+        <h3 th:text="${el.surname}"/>
+        <a th:href="'/home/'+${el.id}" class="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Детализация кредита</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h1>Белинвестбанк</h1>
+    <a class="p-2 text-primary" href="/home">Главная страница</a>
+    <a class="p-2 text-primary" href="/home/add">Добавить клиента</a>
+</header>
+
+<div class="container mt-5 mb-5">
+    <div th:each="el:${credit}" class="alert alert-warning mt-2">
+        Сумма : <p th:text="${el.summa}"/>
+        Валюта : <p th:text="${el.currency}"/>
+        Тип кредита : <p th:text="${el.type}"/>
+        Дата заключения кредита : <p th:text="${el.date}"/>
+        Дата окончания кредитной программы : <p th:text="${el.date1}"/>
+        Процент по кредиту : <p th:text="${el.procent}"/>
+
+        <a th:href="'/credit/'+${el.id}+'/edit'" class="btn btn-info">Редактировать</a><br><br>
+        <form th:action="'/credit/'+${el.id}+'/remove'" method="post">
+            <button th:href="'/credit/'+${el.id}+'/remove'" class="btn btn-danger" type="submit">Удалить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
